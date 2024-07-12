@@ -1,30 +1,34 @@
 import img from './main.jpg'
 
-let all_products = [
+let data_product = [
     {
         id:1,
         name: "Thiago Silva jersey",
-        category: "sports",
-        image: {img},
+        image: img,
         new_price: 50.0,
         old_price: 80.5,
     },
     {
         id:2,
         name: "El Monstro jersey",
-        category: "sports",
-        image: {img},
+        image: img,
         new_price: 45.0,
         old_price: 52.5,
     },
     {
         id:3,
         name: "Legend jersey",
-        category: "sports",
-        image: {img},
+        image: img,
         new_price: 80.0,
         old_price: 100.0,
     },
+    {
+        id:4,
+        name: "Brazil jersey",
+        image: img,
+        new_price: 20.0,
+        old_price: 40.0,
+    },
 ];
 
-export default all_products;
+export default data_product;
