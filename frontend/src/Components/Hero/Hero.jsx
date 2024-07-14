@@ -19,7 +19,7 @@ const Hero = () => {
         </div>
         <div className="hero-latest-btn">
             <div>Latest Collection</div>
-            <img src={arrow_icon} alt=''/>
+            <img src={arrow_icon} alt='' width={50}/>
         </div>
       </div>
       <div className="hero-right">

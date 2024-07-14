@@ -1,24 +1,26 @@
 import React from 'react'
 import './Popular.css'
-import data_product from '../Assets/data'
+import item from '../Assets/data'
 import Item from '../Item/Item'
 
 const Popular = () => {
+  const data = item.map((items,i) => {
+    return <Item
+      key={i}
+      id={items.id}
+      name={items.name}
+      image={items.image}
+      new_price={items.new_price}
+      old_price={items.old_price}
+    />
+  })
+
   return (
     <div className='popular'>
       <h1>POPULAR IN WOMEN</h1>
-      <hr/>
+      <hr />
       <div className="popular-item">
-        Hello{data_product.map((item,i) => {
-            return <Item 
-            key={i}
-            id={item.id}
-            name={item.name}
-            image={item.image}
-            new_price={item.new_price}
-            old_price={item_old_price}
-            />
-        })}
+        {data}
       </div>
     </div>
   )

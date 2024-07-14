@@ -1,6 +1,6 @@
 import img from './main.jpg'
 
-let data_product = [
+const item = [
     {
         id:1,
         name: "Thiago Silva jersey",
@@ -31,4 +31,4 @@ let data_product = [
     },
 ];
 
-export default data_product;
+export default item;
