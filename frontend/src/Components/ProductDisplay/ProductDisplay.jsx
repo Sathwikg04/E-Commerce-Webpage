@@ -1,7 +1,7 @@
 import React from 'react'
 import './ProductDisplay.css'
 import star_icon from '../Assets/main.jpg'
-import star__dull_icon from '../Assets/main.jpg'
+import star_dull_icon from '../Assets/main.jpg'
 
 const ProductDisplay = (props) => {
     const {product} = props;
@@ -21,10 +21,10 @@ const ProductDisplay = (props) => {
       <div className="productdisplay-right">
         <h1>{product.name}</h1>
         <div className="productdisplay-right-star">
-            <img src={star_icon} alt=''/>
-            <img src={star_icon} alt=''/>
-            <img src={star_icon} alt=''/>
-            <img src={star_dull_icon} alt=''/>
+            <img src={star_icon} alt='' width={10} />
+            <img src={star_icon} alt='' width={10}/>
+            <img src={star_icon} alt='' width={10}/>
+            <img src={star_dull_icon} alt='' width={10}/>
             <p>(122)</p>
         </div>
         <div className="productdisplay-right-prices">
@@ -37,6 +37,23 @@ const ProductDisplay = (props) => {
         </div>
         <div className="productdisplay-right-description">
             blah
+        </div>
+        <div className="productdisplay-right-size">
+          <h1>Select Size</h1>
+          <div className="productdisplay-right-size">
+            <div>S</div>
+            <div>M</div>
+            <div>L</div>
+            <div>XL</div>
+            <div>XXL</div>
+          </div>
+        </div>
+        <button>ADD TO CART</button>
+        <div className="productdisplay-right-category">
+          <span>Category :</span>Women, T-Shirt, Crop Top
+        </div>
+        <div className="productdisplay-right-category">
+          <span>Tags :</span>Modern, Latest
         </div>
       </div>
     </div>
