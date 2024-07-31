@@ -1,8 +1,8 @@
 import React from 'react'
 import './Hero.css'
-import hand_icon from '../Assets/main.jpg'
-import arrow_icon from '../Assets/main.jpg'
-import hero_icon from '../Assets/main.jpg'
+import { FaRegHandPeace } from "react-icons/fa6";
+import { FaArrowRight } from "react-icons/fa";
+import hero_icon from '../Assets/hero.png'
 
 const Hero = () => {
   return (
@@ -12,18 +12,18 @@ const Hero = () => {
         <div>
             <div className="hero-hand-icon">
                 <p>new</p>
-                <img src={hand_icon} alt=''/>
+                <FaRegHandPeace size={100}/>
             </div>
             <p>collections</p>
             <p>for everyone</p>
         </div>
         <div className="hero-latest-btn">
             <div>Latest Collection</div>
-            <img src={arrow_icon} alt='' width={50}/>
+            <FaArrowRight/>
         </div>
       </div>
       <div className="hero-right">
-        <img src={hero_icon} alt=''/>
+        <img src={hero_icon} width={500} alt=''/>
       </div>
     </div>
   )

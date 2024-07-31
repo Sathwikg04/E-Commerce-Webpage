@@ -8,14 +8,15 @@ const path = require("path");
 const cors = require("cors");
 const { type } = require("os");
 const { error } = require("console");
-//require('dotenv').config();
+const { randomInt } = require("crypto");
+require('dotenv').config();
 
 
 app.use(express.json());
 app.use(cors());
 
 //Database Connection with MongoDB
-mongoose.connect("mongodb+srv://gsathwik04:sssm2004@cluster0.idews2t.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
+mongoose.connect(process.env.MONGO_URI)
 
 //API Creation
 app.get("/", (req,res)=>{
@@ -43,7 +44,7 @@ app.post("/upload",upload.single('product'),(req,res)=>{
 //Schema for creating Products
 const Product = mongoose.model("Product",{
     id:{
-        type: Number,
+        type: String,
         required: true,
     },
     name:{

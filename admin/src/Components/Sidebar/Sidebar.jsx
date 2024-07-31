@@ -1,21 +1,21 @@
 import React from 'react'
 import './Sidebar.css'
 import { Link } from 'react-router-dom'
-import add_product_icon from '../../assets/main.jpg'
-import list_product_icon from '../../assets/main.jpg'
+import { BsFillCartPlusFill } from "react-icons/bs";
+import { IoMdListBox } from "react-icons/io";
 
 const Sidebar = () => {
   return (
     <div className='sidebar'> 
       <Link to={'./addproduct'} style={{textDecoration:"none"}}>
       <div className="sidebar-item">
-        <img src={add_product_icon} alt='' width={60}/>
+      <BsFillCartPlusFill size={60}/>
         <p>Add Product</p>
       </div>
       </Link>
       <Link to={'/listproduct'} style={{textDecoration:"none"}}>
       <div className="sidebar-item">
-        <img src={list_product_icon} alt='' width={60}/>
+      <IoMdListBox size={60}/>
         <p>Product List</p>
       </div>
       </Link>

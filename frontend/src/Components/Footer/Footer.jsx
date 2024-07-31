@@ -1,16 +1,16 @@
 import React from 'react'
 import './Footer.css'
-import footer_logo from '../Assets/main.jpg' 
-import instageam_icon from '../Assets/main.jpg'
-import pinterest_icon from '../Assets/main.jpg'
-import whatsapp_icon from '../Assets/main.jpg'
+import footer_logo from '../Assets/logo.png'
+import { FaInstagram } from "react-icons/fa6";
+import { FaPinterest } from "react-icons/fa";
+import { FaWhatsapp } from "react-icons/fa";
 
 const Footer = () => {
   return (
     <div className='footer'>
       <div className="footer-logo">
-        <img src={footer_logo} alt='' width={100}/>
-        <p>SHOPPER</p>
+        <img src={footer_logo} alt='' width={150} />
+        <p>Footy</p>
       </div>
       <ul>
         <li>Company</li>
@@ -21,17 +21,17 @@ const Footer = () => {
       </ul>
       <div className="footer-social-icon">
         <div className="footer-icons-container">
-            <img src={instageam_icon} alt='' width={20}/>
+          <FaInstagram size={25} />
         </div>
         <div className="footer-icons-container">
-            <img src={pinterest_icon} alt='' width={20}/>
+          <FaPinterest size={25} />
         </div>
         <div className="footer-icons-container">
-            <img src={whatsapp_icon} alt='' width={20}/>
+          <FaWhatsapp size={25} />
         </div>
       </div>
       <div className="footer-copyright">
-        <hr/>
+        <hr />
         <p>Copyright @ 2024 - All Rights Reserved.</p>
       </div>
     </div>

@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
 import './AddProduct.css'
-import upload_area from '../../assets/main.jpg'
+import upload_area from '../../assets/upload.png'
 
 const Addproduct = () => {
     const[image,setImage] = useState(false);
     const [productDetails,setProductDetails] = useState({
+      id:"",
       name:"",
       image:"",
       category:"women",
@@ -53,6 +54,10 @@ const Addproduct = () => {
 
   return (
     <div className='add-product'>
+      <div className="addproduct-itemfield">
+        <p>Product Id</p>
+        <input value={productDetails.id} onChange={changeHandler} type="text" name='id' placeholder='Type here' />
+      </div>
       <div className="addproduct-itemfield">
         <p>Product Title</p>
         <input value={productDetails.name} onChange={changeHandler} type="text" name='name' placeholder='Type here' />

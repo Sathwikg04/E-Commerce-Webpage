@@ -7,9 +7,9 @@ import Product from './Pages/product.jsx'
 import Cart from './Pages/cart.jsx'
 import Login from './Pages/login.jsx'
 import Footer from './Components/Footer/Footer.jsx'
-import men_banner from './Components/Assets/main.jpg'
-import women_banner from './Components/Assets/main.jpg'
-import kid_banner from './Components/Assets/main.jpg'
+import men_banner from './Components/Assets/banner1.png'
+import women_banner from './Components/Assets/banner2.png'
+import kid_banner from './Components/Assets/banner3.png'
 
 function App() {
   return (

@@ -1,11 +1,11 @@
 import React, { useContext, useRef, useState } from 'react'
 import './Navbar.css'
 
-import logo from '../Assets/main.jpg'
-import cart_icons from '../Assets/main.jpg'
+import logo from '../Assets/logo.png'
+import { FaShoppingCart } from "react-icons/fa";
 import { Link } from 'react-router-dom'
 import { ShopContext } from '../../Context/ShopContext'
-import nav_dropdown from '../Assets/main.jpg'
+import { IoIosArrowDropdown } from "react-icons/io";
 
 const navbar = () => {
   const [menu, setMenu] = useState("shop")
@@ -20,10 +20,10 @@ const navbar = () => {
   return (
     <div className='navbar'>
       <div className='nav-logo'>
-        <img src={logo} alt='logo' width={70}></img>
-        <p>Shopper</p>
+        <img src={logo} alt='logo' width={200}></img>
+        <p>Footy</p>
       </div>
-      <img className='nav-dropdown' onClick={dropdown_toggle} src={nav_dropdown} width={40} height={40} alt="" />
+      <IoIosArrowDropdown className='nav-dropdown'onClick={dropdown_toggle} size={40}/>
       <ul ref={menuRef} className='nav-menu'>
         <li onClick={() => { setMenu("shop") }}>
           <Link style={{textDecoration:'none'}} to='/'>Shop</Link>
@@ -45,10 +45,8 @@ const navbar = () => {
       <div className="nav-login-cart">
         {localStorage.getItem('auth-token')
         ?<button onClick={()=>{localStorage.removeItem('auth-token'); window.location.replace('/')}}>Logout</button>
-        :<Link to='/login'><button>Login</button></Link>}
-        <Link to='/cart'><img src={cart_icons} alt='cart-icon' width={30}>
-        </img>
-        </Link>
+        :<Link to='/login'><button onClick={() => { setMenu("login") }}>Login</button></Link>}
+        <Link to='/cart'><FaShoppingCart size = {40} onClick={() => { setMenu("cart") }}/></Link>
         <div className='nav-cart-count'>{getTotalCartItems()}</div>
       </div>
     </div>
