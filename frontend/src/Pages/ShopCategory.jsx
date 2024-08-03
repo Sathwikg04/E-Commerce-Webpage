@@ -13,7 +13,7 @@ const ShopCategory = (props) => {
       <div className="shopcategory-indexSort">
         <div className='shopcategory-container'>
         <p>
-          <span>Showing 1-12</span> out of 36 products
+          <span>Showing 1-10</span> out of 30 products
         </p>
         <div className="shopcategory-sort">
           Sort by <IoIosArrowDropdown size={40}/>

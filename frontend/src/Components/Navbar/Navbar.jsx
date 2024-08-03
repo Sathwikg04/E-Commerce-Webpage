@@ -26,7 +26,7 @@ const navbar = () => {
       <IoIosArrowDropdown className='nav-dropdown'onClick={dropdown_toggle} size={40}/>
       <ul ref={menuRef} className='nav-menu'>
         <li onClick={() => { setMenu("shop") }}>
-          <Link style={{textDecoration:'none'}} to='/'>Shop</Link>
+          <Link style={{textDecoration:'none'}} to='/'>Home</Link>
           {menu === "shop" ? <hr /> : <></>}
         </li>
         <li onClick={() => { setMenu("mens") }}>

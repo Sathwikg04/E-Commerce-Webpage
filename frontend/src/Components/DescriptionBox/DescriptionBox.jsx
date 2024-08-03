@@ -1,7 +1,8 @@
 import React from 'react'
 import './DescriptionBox.css'
 
-const DescriptionBox = () => {
+const DescriptionBox = (props) => {
+    const { product } = props;
     return (
         <div className='descriptionbox'>
             <div className="descriptionbox-navigator">
@@ -13,8 +14,8 @@ const DescriptionBox = () => {
                 </div>
             </div>
             <div className='descriptionbox-description'>
-                <p>Random Description</p>
-                <p>Random Description 2</p>
+                <p>{product.category}</p>
+                <p>{product.name}</p>
             </div>
         </div>
     )

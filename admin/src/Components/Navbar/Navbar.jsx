@@ -7,6 +7,7 @@ const Navbar = () => {
   return (
     <div className='navbar'>
         <img src={navlogo} alt='' className='nav-logo' width={80}/>
+        <h1>Footy Admin Page</h1>
         <CgProfile size={50} />
     </div>
   )
