@@ -88,7 +88,7 @@ app.post('/addproduct',async (req,res)=>{
         id:1;
     }
     const product = new Product({
-        id:id,
+        id:req.body.id,
         name:req.body.name,
         image:req.body.image,
         category:req.body.category,
@@ -142,14 +142,14 @@ const Users = mongoose.model('Users',{
     }
 })
 
-//Crating Endpoint for registering the user
+//Creating Endpoint for registering the user
 app.post('/signup', async (req,res)=>{
     let check = await Users.findOne({email:req.body.email});
     if(check){
-        return res.status(400).json({success:false,errors:"existing user found with same email address"})
+        return res.status(400).json({success:false,errors:"Existing user found with same email address"})
     }
     let cart = {};
-    for (let i = 0; i < 300; i++) {
+    for (let i = 0; i < 50; i++) {
         cart[i]=0;
     }
     const user = new Users({
@@ -182,7 +182,7 @@ app.post('/login',async (req,res)=>{
                     id:user.id
                 }
             }
-            const token = jwt.sign(data,'secret_econ')
+            const token = jwt.sign(data,'secret_ecom')
             res.json({success:true,token})
         }
         else{
@@ -212,15 +212,17 @@ app.get('/popularinwomen', async (req,res) => {
 //Creating middleware to fetch user
 const fetchUser = async (req,res,next) =>{
     const token = req.header('auth-token');
+    console.log('Token:', token);
     if(!token){
-        res.status(401).send({errors:"Please Authnticate using valid token"})
+        res.status(401).send({errors:"Please Authnticate using valid token (1)"})
     }else{
         try {
-            const data =jwt.verify(token,'secret_ecom');
+            const data = jwt.verify(token,'secret_ecom');
+            console.log('Decoded Data:', data);
             req.user = data.user;
             next();
         } catch (error) {
-            res.status(401).send({errors:"Please Authnticate using valid token"})
+            res.status(401).send({errors:"Please Authnticate using valid token (2)"})
         }
     }
 }
@@ -231,7 +233,7 @@ app.post('/addtocart',fetchUser, async (req,res)=>{
     let userData = await Users.findOne({_id:req.user.id});
     userData.cartData[req.body.itemId] += 1;
     await Users.findOneAndUpdate({_id:req.user.id},{cartData:userData.cartData});
-    res.send("Added")
+    res.json({ message: "Added" });
 }) 
 
 //Creating endpoint for removing products in cartdata
@@ -241,7 +243,7 @@ app.post('/removefromcart',fetchUser, async (req,res)=>{
     if(userData.cartData[req.body.itemId] > 0)
     userData.cartData[req.body.itemId] -= 1;
     await Users.findOneAndUpdate({_id:req.user.id},{cartData:userData.cartData});
-    res.send("Removed")
+    res.json({ message: "Removed" });
 }) 
 
 //creating endpoint to get cartdata

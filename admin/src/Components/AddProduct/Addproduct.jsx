@@ -55,7 +55,7 @@ const Addproduct = () => {
   return (
     <div className='add-product'>
       <div className="addproduct-itemfield">
-        <p>Product Id</p>
+        <p>Id</p>
         <input value={productDetails.id} onChange={changeHandler} type="text" name='id' placeholder='Type here' />
       </div>
       <div className="addproduct-itemfield">

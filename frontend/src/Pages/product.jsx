@@ -21,7 +21,6 @@ const Product = () => {
     <ProductDisplay product={state} />
     <DescriptionBox product={state}/>
     <RelatedProducts product={state}/>
-    {console.log(product)}
   </div>
   )
 }

@@ -3,7 +3,7 @@ import React, { createContext, useEffect, useState } from "react";
 export const ShopContext = createContext(null);
 const getDefaultCart = () => {
     let cart = {};
-    for (let index = 0; index < 300+1; index++) {
+    for (let index = 0; index < 50+1; index++) {
         cart[index] = 0;
     }
     return cart;
@@ -19,12 +19,14 @@ const ShopContextProvider = (props) => {
         .then((data)=>setAll_Products(data))
 
         if(localStorage.getItem('auth-token')){
+            const token = sessionStorage.getItem('token');
             fetch('http://localhost:4000/getcart',{
                 method:'POST',
                 headers:{
                     Accept:'application/form-data',
-                    'auth-token':`${localStorage.getItem('auth-item')}`,
+                    'auth-token':`${localStorage.getItem('auth-token')}`,
                     'Content-Type':'application/json',
+                    Authorization: `Bearer ${token}`
                 },
                 body:"",
             }).then((res)=>res.json())
@@ -70,8 +72,8 @@ const ShopContextProvider = (props) => {
         let totalAmount = 0;
         for(const item in cartItems){
             if(cartItems[item]>0){
-                let itemInfo = all_products.find((product) => product.id === Number(item))
-                totalAmount += itemInfo.new_price * cartItems[item];
+                let itemInfo = all_products.find((product) => product.id === `${item}`)
+                totalAmount += itemInfo.new_price * cartItems[item]
             }
         }
         return totalAmount;

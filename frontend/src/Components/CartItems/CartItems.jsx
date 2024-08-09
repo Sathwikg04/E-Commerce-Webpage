@@ -1,10 +1,24 @@
 import React, { useContext } from 'react'
 import './CartItems.css'
 import { ShopContext } from '../../Context/ShopContext'
-import remove_icon from '../Assets/main.jpg'
+import { RxCross1 } from "react-icons/rx";
 
 const CartItems = () => {
     const {getTotalCartAmount, all_products, cartItems, removeFromCart } = useContext(ShopContext);
+
+    const cartTotal = all_products.map((e,i) => {
+        if (cartItems[Number(e.id)] > 0) {
+            return <div className="cartitems-format cartitems-format-main" key={i}>
+                <img src={e.image} alt="" className='carticon-product-icon' />
+                <p>{e.name}</p>
+                <p>${e.new_price}</p>
+                <button className='cartitems-quantity'>{cartItems[e.id]}</button>
+                <p>${e.new_price * cartItems[e.id]}</p>
+                <RxCross1 className='cartitems-remove-icon'size={20} onClick={() => { removeFromCart(e.id) }}/>
+            </div>
+        }
+        return null;
+    })
 
     return (
         <div className='cartitems'>
@@ -17,19 +31,7 @@ const CartItems = () => {
                 <p>Remove</p>
             </div>
             <hr />
-            {all_products.map((e) => {
-                if (cartItems[e.id] > 0) {
-                    return <div className="cartitems-format cartitems-format-main">
-                        <img src={e.image} alt="" className='carticon-product-icon' />
-                        <p>{e.name}</p>
-                        <p>${e.new_price}</p>
-                        <button className='cartitems-quantity'>{cartItems[e.id]}</button>
-                        <p>${e.new_price * cartItems[e.id]}</p>
-                        <img className='cartitems-remove-icon' src={remove_icon} width={40} onClick={() => { removeFromCart(e.id) }}></img>
-                    </div>
-                }
-                return null;
-            })}
+            {cartTotal}
             <div className="cartitems-down">
                 <div className="cartitems-total">
                     <h1>Cart Total</h1>
