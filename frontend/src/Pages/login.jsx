@@ -76,7 +76,6 @@ const Login = () => {
           <p className="login-login">
             Create an account <span onClick={() => { setState("Sign Up") }}>Click here!</span>
           </p>}
-
       </div>
     </div>
   )

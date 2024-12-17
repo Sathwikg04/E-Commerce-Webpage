@@ -1,26 +1,36 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import './CSS/ShopCategory.css'
 import { ShopContext } from '../Context/ShopContext'
-import { IoIosArrowDropdown } from "react-icons/io";
 import Item from '../Components/Item/Item';
 
 const ShopCategory = (props) => {
   const { all_products } = useContext(ShopContext);
+  const [text, setText] = useState("");
+  const [limit, setLimit] = useState(10);
+
+  const searchedProducts = all_products.filter(item => item.name.toLowerCase().includes(text.toLowerCase()));
 
   return (
     <div className='shop-category'>
-      <img className='shopcategory-banner' src={props.banner} alt=''/>
+      <img className='shopcategory-banner' src={props.banner} alt='' />
       <div className="shopcategory-indexSort">
         <div className='shopcategory-container'>
-        <p>
-          <span>Showing 1-10</span> out of 30 products
-        </p>
-        <div className="shopcategory-sort">
-          Sort by <IoIosArrowDropdown size={40}/>
-        </div>
+          <input placeholder='Search for Products' onChange={(e) => setText(e.target.value)} className="shopcategory-input"></input>
+          <p>
+            <span>Showing 1-{limit}</span> out of 30 products
+            <div className="shopcategory-sort">
+              <label htmlFor="list">Number of items:</label>
+              <select defaultValue="10" name="list" id="list" onChange={(e) => setLimit(e.target.value)}>
+                <option value="5">5</option>
+                <option value="10">10</option>
+                <option value="20">20</option>
+                <option value="30">30</option>
+              </select>
+            </div>
+          </p>
         </div>
         <div className="shopcategory-products">
-          {all_products.map((items, i) => {
+          {searchedProducts.map((items, i) => {
             if (props.category === items.category) {
               return <Item
                 key={i}
